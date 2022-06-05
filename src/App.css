@@ -563,13 +563,54 @@ margin: auto;
 }
 .container .controler input, .container .controler select{
   margin-left: 7px;
+  cursor: pointer;
 }
-.container .get-cv button{
+.container .get-cv button, .container .go-to-main button{
   max-width: 90%;
-  margin: auto;
+  margin: 5px auto;
   background-color: #2ca2a2;
   border: 0;
   border-radius: 2px;
+  cursor: pointer;
 }
+.container .go-to-main button{
 
+  background-color: rgb(255 131 131);
+  width: 90%;
+  height: 3vh;
+}
+/* Popup for the Apandond botton */
+.popup{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background-color: rgba(0, 0,0, 0.3);
+display: flex;
+justify-self: center;
+align-items: center;
+}
+ .pupup-inner{
+position: relative;
+padding: 32px;
+width: 75%;
+max-width: 640px;
+background-color: white;
+margin: auto;
+
+}
+.pupup-inner .close-btn{
+position: absolute;
+top: 16px;
+background-color: white;
+right: 16px;
+}
+.pupup-inner button{
+  background-color:  rgb(255 131 131);
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 5px;
+  cursor: pointer;
+}
 /* End of final */

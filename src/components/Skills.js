@@ -67,7 +67,7 @@ const Skills = () => {
           className="skill-input"
           placeholder="You Skill e.g HTMLs"
           onChange={(e) => {
-            if (e.target.value.length > 2) {
+            if (e.target.value.length > 1) {
               e.target.classList.remove("invalid");
               e.target.classList.add("valid");
               setSkill(e.target.value);

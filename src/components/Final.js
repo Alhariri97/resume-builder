@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
-
+import Popup from "./Popup";
 //component to print
 const info = JSON.parse(localStorage.getItem("info"));
 const skills = JSON.parse(localStorage.getItem("skills"));
@@ -11,7 +11,6 @@ const text = JSON.parse(localStorage.getItem("text"));
 // console.log(info.personInfo.first);
 const changeHeaderColor = (e) => {
   const page = document.getElementsByTagName("h3");
-  console.log(page);
   [...page].forEach((ele) => (ele.style.color = e.target.value));
 };
 //
@@ -129,6 +128,7 @@ const Final = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+  const [buttonPopup, setButtonPopup] = useState(false);
 
   return (
     <div id="final" className="container">
@@ -188,6 +188,13 @@ const Final = () => {
         <div className="get-cv">
           <button onClick={handlePrint}>Get me my CV!</button>
         </div>
+        <div className="go-to-main">
+          <button onClick={() => setButtonPopup(true)}>Abandon! </button>
+        </div>
+        <Popup trigger={buttonPopup} settTrigger={setButtonPopup}>
+          <h4>Are you Sure!</h4>
+          <p>This will Delete all your information.</p>
+        </Popup>
       </div>
     </div>
   );
