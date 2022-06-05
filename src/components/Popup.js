@@ -13,7 +13,7 @@ function Popup(props) {
     <div className="popup">
       <div className="pupup-inner">
         <button className="close-btn" onClick={() => props.settTrigger(false)}>
-          close x
+          &#10060;
         </button>
         {props.children}
         <button className="sure-btn" onClick={goBack}>

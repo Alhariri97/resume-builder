@@ -9,18 +9,22 @@ const Allskils = () => {
   };
   return (
     <div>
-      <ul className="heloo">
-        {skills.map((skill) => {
-          return (
-            <li key={skill.id}>
-              <h3>{skill.newSkill}</h3>
-              <span className="del" id={skill.id} onClick={delet}>
-                Delete
-              </span>
-            </li>
-          );
-        })}
-      </ul>
+      {skills.length ? (
+        <ul className="heloo">
+          {skills.map((skill) => {
+            return (
+              <li key={skill.id}>
+                <h3>{skill.newSkill}</h3>
+                <span className="del" id={skill.id} onClick={delet}>
+                  Delete
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <h3>You haven't added any skills yet</h3>
+      )}
     </div>
   );
 };
