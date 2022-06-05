@@ -1,17 +1,17 @@
+:root {
+  --main-bg-color:#2ca2a2;
+  --hover-bg-color: #30b2b3;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  font-family: 'Times New Roman', Times, serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+
 
 .App-header {
   background-color: #282c34;
@@ -36,3 +36,540 @@
     transform: rotate(360deg);
   }
 }
+
+
+.print{
+  text-align: left;
+  width: 96%;
+  border: black solid 1px;
+  padding: 0 1em 0 1em
+
+}
+
+.container{
+  display: flex;
+}
+
+.border{
+  background-color: #282c34;
+  height: 1px;
+  width: 80%;
+  margin:  auto;
+
+}
+@media print{
+  .print{
+    border: transparent solid 1px;
+    };
+}
+
+.main-info{
+  padding: 0 0 10px 0;
+  /* font-size: small; */
+}
+
+/* 
+Now we Start */
+
+ul > li {
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+/* header  */
+header{
+  width: 95%;
+  margin: auto;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;  
+}
+header ul{
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+header ul li a{
+  display: block;
+  color: white;
+  background-color: var(--main-bg-color);
+  margin: 2px;
+  border-radius: 10px;
+  padding: 10px;
+}
+header ul li a:hover{
+  background-color: var(--hover-bg-color)
+
+}
+
+header h1{
+  color:#2ca3a5;
+
+}
+
+.logo{
+  width: 100px;
+  color: #7fe2d6;
+  position: relative;
+}
+
+
+/* end of header */
+
+/* start landing */
+main .be-you , .second {
+  display: flex;
+  height: 50vh;
+}
+main .be-you div , .hello, .chat , .button p, .second div{
+  width: 50%;
+}
+
+main .be-you .list{
+  background-image: url("https://2e8ram2s1li74atce18qz5y1-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/Screen-Shot-2017-11-27-at-1.22.41-PM-1024x734.png");
+  background-position: center;
+  background-size: cover;
+  border-bottom-right-radius: 90px ;
+  color: white;
+  border-top-right-radius: 90px ;
+}
+@media (max-width: 768px) {
+main .be-you div , .hello, .chat , .button p, .second div{
+  width: 50%;
+}
+.be-you .list h4 , .list  p{
+  visibility: hidden;
+}
+main .be-you  , .second , .theerd, .fourth{
+  height: 30vh;
+}
+.be-you .button p{
+  background-color: black;
+margin:2vh auto;
+height: 1px;
+}
+}
+main .be-you .list h4 {
+  font-size: 1em;
+  font-weight: 800;
+  font-family: 'Times New Roman', Times, serif;
+}
+main .be-you .list p{
+background-color: white;
+width: 80%;
+margin: auto;
+height: 2px;
+}
+.button p{
+  background-color: black;
+margin:5vh auto;
+height: 1px;
+}
+.button button{
+  background-color: #2ca2a2;
+  border: transparent;
+  border-radius: 20px;
+  height: 3em;
+  cursor: pointer;
+  color: white;
+  font-weight: 900;
+}
+.button button:hover{
+  background-color: var(--hover-bg-color);
+}
+
+.para p{
+  padding: 0 1vh;
+  font-style: italic;
+  color:#3c6b75;
+}
+/*  */
+
+
+.second .right {
+border-bottom-left-radius: 90px;
+  border-top-left-radius: 90px;
+  /* background-position: center; */
+  background-size: cover;
+  background-image: url("https://cdn.technologyadvice.com/wp-content/uploads/2019/05/6-Best-In-Class-Tools-To-Speed-Up-Your-Recruitment-Process--700x408.png");
+}
+
+@media (min-width: 768px){
+  header ul li a{
+    display: block;
+    color: white;
+    background-color: var(--main-bg-color);
+    margin:  0 20px;
+  }
+  .second .right {
+      background-size: cover;
+    }
+    .para p{
+      line-height: 50px;
+      padding: 5px;
+    }
+ }
+
+ .theerd{
+  display: flex;
+  height: 17vh;
+  padding: 0 10px;
+}
+
+.theerd div{
+   margin:  0 5px;
+   width: calc(100%/ 3);
+ }
+ .second .new {
+   background-image: url("https://www.cognisun.com/wp-content/uploads/2019/03/header-vector.png");
+}
+.curve{
+  height: 10vh;
+}
+
+footer{
+  position: relative;
+  
+}
+footer svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+footer .flex {
+  text-align: start;
+  display: flex;
+}
+
+.flex div{
+  width: calc(65% / 3);
+padding: 0 5%
+}
+.flex div ul {
+  /* display: flex;
+  flex-wrap: wrap; */
+  margin: 3px 0;
+  padding: 00;
+
+}
+.flex div ul li {
+  cursor: pointer;
+}
+.flex div ul li:hover {
+  cursor: pointer;
+  color:#583bf5;
+}
+.flex div h4 {
+margin: 2px 0;
+}
+.copy{
+  margin: 0;
+  text-align: start;
+  padding: 0px 0px 20px 50px ;
+}
+/* End of Footer */
+
+.App .none{
+height: 20vh;
+}
+.theerd, .fourth{
+  height: 25vh;
+}
+.theerd{
+  margin-top: 20px;
+}
+
+/* Start of create contact */
+.contact{
+  width: 80%;
+  margin: auto;
+}
+.contact h3{
+  margin:10px 3px;
+}
+.form{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+.form div{
+  width: 50%;
+  height: 10vh;
+  /* padding-bottom: 10px;s */
+}
+
+.form div input , #quali-sele {
+height: 3vh;
+border-radius: 5px;
+width: 90%;
+
+}
+.form div .valid , #skills .valid, #summary .valid{
+  border: 2px solid green;
+  }
+  .form div .invalid ,#skills .invalid,  #summary .invalid{
+    border: 2px solid red;
+    }
+.form div label{
+  /* height: 5vh; */
+  display: block;
+  /* margin-top: 20px; */
+  }
+
+
+@media (min-width: 768px) {
+  .form div{
+    width: calc(100% / 3);
+    height: 10vh;
+    /* padding-bottom: 10px;s */
+  }
+  .form div input {
+    width: 75%;
+  }
+} 
+
+  
+  form .submit {
+    height: 27px;
+    width: 20%;
+    background-color: #2ca2a2;
+    border: 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  @media (min-width:768px) {
+    form .submit{
+      width: 10%;
+    }
+  }
+/* /* End of create contact */
+
+
+/* Start of edu*/
+#quali, #edu-view , #work, #work-view , #skills, #summary, #final{
+width: 80%;
+margin: auto;
+}
+
+/* End of edu*/
+
+/* Start of edu-view */
+#edu-view  ul, #work-view ul{
+  display: flex;
+  padding: 0;
+  margin: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#edu-view  ul li, #work-view ul li {
+  border: 1px solid #282c34;
+  margin: 2%;
+  width: 45%;
+  padding: 0 0 5px 0  ;
+}
+#edu-view .del ,  #work-view .del{
+  background-color: rgb(255 131 131);
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 2px;
+}
+@media (min-width:768px) {
+  #edu-view  ul li,  #work-view ul li{
+    width: 28.5%;
+  }
+}
+
+#edu-view button  ,  #work-view button{
+  width: 41%;
+  border: 0;
+  border-radius: 2px;
+  margin: 2%;
+  height: 27px;
+  cursor: pointer;
+}
+#edu-view .add ,  #work-view .add{
+  float: left;
+  background-color: aquamarine;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  
+}
+#edu-view .next,  #work-view  .next{
+  float: right;
+  background-color: #2ca2a2;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+@media (min-width:768px) {
+  #edu-view button ,  #work-view  button{
+    width: 20%;
+    background-color: #282c34;
+   
+  }
+}
+
+/* Ens of edu-view */
+
+/* Start of work */
+#work form textarea {
+  width: 100%;
+  resize: none;
+  height: 10vh;
+}
+
+@media (min-width:768px) {
+  #work form textarea {
+    width: 50%;
+    margin: auto;
+    }
+    #work form .text{
+      margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: stretch;
+    flex-wrap: wrap;
+    flex-direction: column;
+    }
+    #work form .desc{
+      margin-bottom : 5px;
+    }
+
+}
+
+/* End of work */
+
+/* Work-view Styling added to the edu-view   */
+
+/* Start of skills */
+  #skills ul{
+    padding: 0;
+  }
+  #skills ul li{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: 5px 0;
+    padding: 2px;
+  }
+
+  #skills .del{
+    background-color: rgb(255 131 131);
+    cursor: pointer;
+    margin: 5px;
+    padding: 2px;
+    border-radius: 2px;
+  }
+  #skills h3{
+    padding-left:10px ;
+  }
+  .add-skill{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px
+  }
+  .add-skill .add{
+    background-color: aquamarine;
+    border: 0;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;   
+     cursor: pointer; 
+    height: 3.5vh;
+    width: 30%;
+  }
+  .add-skill .skill-input{
+    border-right: 0;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    width: 69%;
+  }
+  #skills .next, #summary .next{
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    border: 0;
+    background-color: #2ca2a2;
+    width: 41%;
+    cursor: pointer; 
+    height: 3vh;
+  }
+
+
+  @media (min-width:768px) {
+
+
+  #skills ul {
+    display: flex;
+  }
+  #skills ul li{
+    width: 50%;
+    margin: 2%;
+  }
+  .add-skill{
+    justify-content: flex-start;
+    margin: 16px;
+  }
+  .add-skill .add{
+    width: 10%;
+  }
+  .add-skill .skill-input{
+    width: 20%;
+  }
+  #skills .next  {
+    float: right;
+    width: 20%;
+  }
+  }
+
+/* End of skills */
+
+/* Start of Summary */
+#summary textarea{
+  width: 80%;
+  margin: 3vh auto;
+  display: block;
+  resize: none;
+  height: 6vh;
+}
+@media (min-width:768px) {
+  #summary textarea{
+    width: 60%
+  }
+  #summary .next{
+    width: 20%;
+  }
+}
+/* End of Summary */
+/* Start of final */
+.container .controler{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-bottom: 30px;
+}
+.container .controler label{
+  margin-top: 10px;
+  padding: 3px;
+}
+.container .controler input, .container .controler select{
+  margin-left: 7px;
+}
+.container .get-cv button{
+  max-width: 90%;
+  margin: auto;
+  background-color: #2ca2a2;
+  border: 0;
+  border-radius: 2px;
+}
+
+/* End of final */
