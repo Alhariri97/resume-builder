@@ -1,52 +1,47 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+//
+import CreateContact from "./components/CreateContact";
+import CreateEducation from "./components/CreateEducation";
+import CreateEducationView from "./components/CreateEducationView";
+import CreateWork from "./components/CreateWork";
+import CreateWorkView from "./components/CreateWrokView";
+import CreateSkills from "./components/CreateSkills";
+import CreateSummary from "./components/CreateSummary";
+import CreateFinal from "./components/CreateFinal";
+//
 import Header from "./components/header";
-import Contact from "./components/Contact";
 import Footer from "./components/footer";
-import Education from "./components/Education";
-import EducationView from "./components/EducationView";
-import Work from "./components/Work";
-import WorkView from "./components/WrokView";
-import Skills from "./components/Skills";
-import Summary from "./components/Summary";
-import Final from "./components/Final";
+//
 import LandPage from "./components/LandPage";
-
-// const fs = require("fs");
 
 function App() {
   // show and hide component
   const [show, setShow] = useState(true);
-  // let show = true;
   const href = window.location.href.split("/");
   useEffect(() => {
     if (href.includes("create")) {
       setShow(false);
     }
   }, [href]);
-
-  const [person, setPerson] = useState({});
-
+  // const [person, setPerson] = useState({});
   return (
     <BrowserRouter>
       <div className="App">
         {show ? <Header /> : <></>}
         <Routes>
+          <Route path="/create/contact" element={<CreateContact />} />
+          <Route path="/create/education" element={<CreateEducation />} />
           <Route
-            path="/create/contact"
-            element={<Contact onChange={(value) => setPerson({ value })} />}
+            path="/create/education-view"
+            element={<CreateEducationView />}
           />
-          <Route
-            path="/create/education"
-            element={<Education person={person} setPerson={setPerson} />}
-          />
-          <Route path="/create/education-view" element={<EducationView />} />
-          <Route path="/create/work" element={<Work />} />
-          <Route path="/create/work-view" element={<WorkView />} />
-          <Route path="/create/skills" element={<Skills />} />
-          <Route path="/create/summary" element={<Summary />} />
-          <Route path="/create/final" element={<Final />} />
+          <Route path="/create/work" element={<CreateWork />} />
+          <Route path="/create/work-view" element={<CreateWorkView />} />
+          <Route path="/create/skills" element={<CreateSkills />} />
+          <Route path="/create/summary" element={<CreateSummary />} />
+          <Route path="/create/final" element={<CreateFinal />} />
           <Route path="/" element={<LandPage />} />
         </Routes>
         {show ? <Footer /> : <></>}

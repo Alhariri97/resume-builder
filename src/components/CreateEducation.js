@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Education = (props) => {
+const Education = () => {
   if (!localStorage.getItem("edu")) {
     window.localStorage.setItem("edu", JSON.stringify([]));
   }

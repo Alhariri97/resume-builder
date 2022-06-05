@@ -29,7 +29,6 @@ const Contact = (props) => {
         phone,
         street,
       };
-      props.onChange(personInfo);
       window.localStorage.setItem("info", JSON.stringify({ personInfo }));
       window.location.pathname = "/create/education";
     } else {
