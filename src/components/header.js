@@ -1,22 +1,30 @@
 const Header = () => {
+  const active = (ele) => {};
   return (
     <header>
       <div>
-        {/* <img alt="logo" src=""></img> */}
         <h1 className="logo">CV</h1>
       </div>
       <ul>
         <li>
-          <a href="/">Main</a>
+          <a onClick={active} href="/">
+            Main
+          </a>
         </li>
         <li>
-          <a href="Other">work</a>
+          <a onClick={active} href="Other">
+            work
+          </a>
         </li>
         <li>
-          <a href="featuers">Features</a>
+          <a onClick={active} href="featuers">
+            Features
+          </a>
         </li>
         <li>
-          <a href="Contact-us">Contact</a>
+          <a onClick={active} href="Contact-us">
+            Contact
+          </a>
         </li>
       </ul>
     </header>

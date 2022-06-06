@@ -17,6 +17,7 @@ import Footer from "./components/footer";
 import LandPage from "./components/LandPage";
 import Work from "./Work";
 import Features from "./components/Features";
+import ContactUs from "./components/ContactUs";
 function App() {
   // show and hide component
   const [show, setShow] = useState(true);
@@ -45,6 +46,8 @@ function App() {
           <Route path="/create/final" element={<CreateFinal />} />
           <Route path="/" element={<LandPage />} />
           <Route path="/other" element={<Work />} />
+
+          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/featuers" element={<Features />} />
         </Routes>
         {show ? <Footer /> : <></>}

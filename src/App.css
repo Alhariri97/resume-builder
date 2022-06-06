@@ -95,16 +95,21 @@ header ul{
 }
 header ul li a{
   display: block;
-  color: white;
-  background-color: var(--main-bg-color);
+  color: black;
+  border: 1px solid;
   margin: 2px;
   border-radius: 10px;
   padding: 10px;
 }
 header ul li a:hover{
   background-color: var(--hover-bg-color)
-
 }
+header ul li .active{
+  background-color: var(--main-bg-color);
+  color: white;
+  border: 0;
+}
+
 
 header h1{
   color:#2ca3a5;
@@ -232,8 +237,8 @@ border-bottom-left-radius: 90px;
 }
 
 footer{
-  position: absolute;
-  bottom: 0;
+
+  margin-top: 10px;
   width: 100%;
 
   
@@ -282,15 +287,15 @@ margin: 2px 0;
 height: 20vh;
 }
 .theerd, .fourth{
-  height: 35vh;
+  /* height: 35vh; */
 }
 .theerd{
   margin-top: 20px;
 }
-.fourth{
+/* .fourth{
   padding-bottom: 10vh;
 
-}
+} */
 /* Start of create contact */
 .contact{
   width: 80%;
@@ -622,12 +627,25 @@ right: 16px;
 }
 /* End of final */
 /* Start of landing Work  */
-#landing-work, #features{
-  /* background-color: #282c34; */
-  /* min-height: ; */
+#landing-work, #features , #contact-us{
   width: 80%;
   margin: auto;
+  min-height: 71vh;
 }
 #landing-work p{
   line-height: 3vh;
 }
+/* 
+ */
+ .fourth{
+   height: 10vh;
+ }
+ @media (max-width:630px) {
+
+   .fourth {
+     height: 20vh;
+   }
+   .theerd{
+    height: 25vh;
+   }
+ }
