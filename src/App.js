@@ -2,20 +2,21 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //
-import CreateContact from "./components/CreateContact";
-import CreateEducation from "./components/CreateEducation";
-import CreateEducationView from "./components/CreateEducationView";
-import CreateWork from "./components/CreateWork";
-import CreateWorkView from "./components/CreateWrokView";
-import CreateSkills from "./components/CreateSkills";
-import CreateSummary from "./components/CreateSummary";
-import CreateFinal from "./components/CreateFinal";
+import CreateContact from "./components/create/CreateContact";
+import CreateEducation from "./components/create/CreateEducation";
+import CreateEducationView from "./components/create/CreateEducationView";
+import CreateWork from "./components/create/CreateWork";
+import CreateWorkView from "./components/create/CreateWrokView";
+import CreateSkills from "./components/create/CreateSkills";
+import CreateSummary from "./components/create/CreateSummary";
+import CreateFinal from "./components/create/CreateFinal";
 //
 import Header from "./components/header";
 import Footer from "./components/footer";
 //
 import LandPage from "./components/LandPage";
-
+import Work from "./Work";
+import Features from "./components/Features";
 function App() {
   // show and hide component
   const [show, setShow] = useState(true);
@@ -43,6 +44,8 @@ function App() {
           <Route path="/create/summary" element={<CreateSummary />} />
           <Route path="/create/final" element={<CreateFinal />} />
           <Route path="/" element={<LandPage />} />
+          <Route path="/other" element={<Work />} />
+          <Route path="/featuers" element={<Features />} />
         </Routes>
         {show ? <Footer /> : <></>}
       </div>

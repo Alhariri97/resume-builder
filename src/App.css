@@ -5,6 +5,7 @@
 
 .App {
   text-align: center;
+  position: relative;
 }
 
 *{
@@ -122,7 +123,7 @@ header h1{
 /* start landing */
 main .be-you , .second {
   display: flex;
-  height: 50vh;
+  height: 30vh;
 }
 main .be-you div , .hello, .chat , .button p, .second div{
   width: 50%;
@@ -231,7 +232,10 @@ border-bottom-left-radius: 90px;
 }
 
 footer{
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
   
 }
 footer svg {
@@ -278,12 +282,15 @@ margin: 2px 0;
 height: 20vh;
 }
 .theerd, .fourth{
-  height: 25vh;
+  height: 35vh;
 }
 .theerd{
   margin-top: 20px;
 }
+.fourth{
+  padding-bottom: 10vh;
 
+}
 /* Start of create contact */
 .contact{
   width: 80%;
@@ -614,3 +621,13 @@ right: 16px;
   cursor: pointer;
 }
 /* End of final */
+/* Start of landing Work  */
+#landing-work, #features{
+  /* background-color: #282c34; */
+  /* min-height: ; */
+  width: 80%;
+  margin: auto;
+}
+#landing-work p{
+  line-height: 3vh;
+}

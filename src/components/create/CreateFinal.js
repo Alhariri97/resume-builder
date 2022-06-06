@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
-import Popup from "./Popup";
+import Popup from "../Popup";
 //component to print
 const info = JSON.parse(localStorage.getItem("info"));
 const skills = JSON.parse(localStorage.getItem("skills"));
