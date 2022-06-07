@@ -11,8 +11,8 @@ import CreateSkills from "./components/create/CreateSkills";
 import CreateSummary from "./components/create/CreateSummary";
 import CreateFinal from "./components/create/CreateFinal";
 //
-import Header from "./components/header";
-import Footer from "./components/footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 //
 import LandPage from "./components/LandPage";
 import Work from "./Work";

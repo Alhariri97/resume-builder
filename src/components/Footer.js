@@ -31,7 +31,8 @@ const Footer = () => {
         </div>
       </div>
       <p className="copy">
-        &#169; Coded by <a href="https://github.com/Alhariri97">Abdul</a>.
+        &#169; Coded by <a href="https://github.com/Alhariri97">Abdul</a>{" "}
+        {new Date().getFullYear()}.
       </p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
