@@ -117,7 +117,7 @@ const Skills = () => {
     const id = e.target.id;
     let update = skills.filter((ele) => ele.id.toString() !== id);
     setSkills(update);
-    // window.location.pathname = "/create/skills";
+    window.location.pathname = "/create/skills";
   };
   const handelSubmit = () => {
     localStorage.setItem("skills", JSON.stringify(skills));

@@ -1,3 +1,4 @@
+import CreateContact from "./create/CreateContact";
 const LandPage = () => {
   //
 
