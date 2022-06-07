@@ -1,23 +1,40 @@
 import { useState } from "react";
-const Summary = () => {
+import apiRequest from "../../apiRequest";
+
+const Summary = ({
+  setShowSummary,
+  setShowFinal,
+  perosnID,
+  API_URL,
+  setfetchError,
+}) => {
   if (!localStorage.getItem("text")) {
     localStorage.setItem("text", JSON.stringify({}));
   }
-  //   const textLocal = JSON.parse(localStorage.getItem("text"));
   const [text, setText] = useState("");
   const go = () => {
-    //
-    //   const skillInput = document.getElementsByClassName("skill-input");
-    // if ([...skillInput][0].className.split(" ").includes("valid")
-    //
     const validText = document.getElementsByTagName("textarea");
     if ([...validText][0].className.split(" ").includes("valid")) {
       localStorage.setItem("text", JSON.stringify({ text }));
-      window.location.pathname = "/create/final";
+      //
+      const updateOptions = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: text }),
+      };
+      const reqUrl = `${API_URL}/${perosnID}`;
+      const result = apiRequest(reqUrl, updateOptions);
+      if (result) setfetchError(result);
+      //
+      setShowSummary(false);
+      setShowFinal(true);
     } else {
       [...validText][0].focus();
     }
   };
+
   return (
     <div id="summary">
       <h2>Alrighty, let's work on you summary </h2>

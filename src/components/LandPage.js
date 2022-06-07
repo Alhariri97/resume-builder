@@ -1,10 +1,9 @@
-import CreateContact from "./create/CreateContact";
 const LandPage = () => {
   //
 
   //
   const go = () => {
-    window.location.pathname = "create/contact";
+    window.location.pathname = "create";
   };
   return (
     <main>

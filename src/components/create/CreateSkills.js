@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import apiRequest from "../../apiRequest";
+
 // const Allskils = () => {
 //   const skills = JSON.parse(localStorage.getItem("skills"));
 // const delet = (e) => {
@@ -93,14 +95,20 @@ import { useState } from "react";
 // };
 
 // //////
-const Skills = () => {
+const Skills = ({
+  setShowSummary,
+  setShowSkills,
+  API_URL,
+  perosnID,
+  setfetchError,
+}) => {
   if (!localStorage.getItem("skills")) {
     window.localStorage.setItem("skills", JSON.stringify([]));
   }
   const [skills, setSkills] = useState(
     JSON.parse(localStorage.getItem("skills"))
   );
-  const handle = () => {
+  const handle = async () => {
     const input = document.getElementById("input");
     if (input.value.length) {
       const newSk = {
@@ -113,16 +121,32 @@ const Skills = () => {
       input.focus();
     }
   };
-  const delet = (e) => {
+  const delet = async (e) => {
     const id = e.target.id;
     let update = skills.filter((ele) => ele.id.toString() !== id);
+
     setSkills(update);
-    window.location.pathname = "/create/skills";
   };
   const handelSubmit = () => {
-    localStorage.setItem("skills", JSON.stringify(skills));
-    window.location.pathname = "/create/summary";
+    setShowSkills(false);
+    setShowSummary(true);
   };
+  useEffect(() => {
+    localStorage.setItem("skills", JSON.stringify(skills));
+    //
+    const updateOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ skills: skills }),
+    };
+    const reqUrl = `${API_URL}/${perosnID}`;
+    const result = apiRequest(reqUrl, updateOptions);
+    if (result) setfetchError(result);
+    //
+  }, [skills, API_URL, perosnID, setfetchError]);
+
   return (
     <div id="skills">
       <h2>Well, let’s take care of your</h2>

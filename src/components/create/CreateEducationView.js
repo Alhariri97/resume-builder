@@ -1,19 +1,47 @@
-const EducationView = () => {
-  const edu = JSON.parse(localStorage.getItem("edu"));
+import { useState } from "react";
+import apiRequest from "../../apiRequest";
+
+const EducationView = ({
+  setShowEducation,
+  setShowEducationView,
+  setShowWork,
+  API_URL,
+  perosnID,
+  setfetchError,
+}) => {
+  if (!localStorage.getItem("edu")) {
+    localStorage.setItem("deu", JSON.stringify([]));
+  }
+  const [edu, setEdu] = useState(JSON.parse(localStorage.getItem("edu")));
   const addMore = () => {
-    window.location.pathname = "/create/education";
+    setShowEducation(true);
+    setShowEducationView(false);
   };
   const go = () => {
-    window.location.pathname = "/create/work";
+    setShowWork(true);
+    setShowEducationView(false);
   };
-  const delet = (e) => {
+  const delet = async (e) => {
     const id = e.target.id;
     console.log(typeof id);
     let update = edu.filter((ele) => ele.id.toString() !== id);
     console.log(edu, "original");
     console.log(update, "updated");
+    setEdu(update);
     window.localStorage.setItem("edu", JSON.stringify(update));
-    window.location.pathname = "/create/education-view";
+    //
+    const updateOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ edu: [update] }),
+    };
+    console.log(edu);
+    const reqUrl = `${API_URL}/${perosnID}`;
+    const result = await apiRequest(reqUrl, updateOptions);
+    if (result) setfetchError(result);
+    //
   };
 
   return (

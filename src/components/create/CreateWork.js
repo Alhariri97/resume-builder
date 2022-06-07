@@ -1,6 +1,13 @@
 import { useState } from "react";
+import apiRequest from "../../apiRequest";
 
-const Work = () => {
+const Work = ({
+  setShowWork,
+  setShowWorkView,
+  API_URL,
+  perosnID,
+  setfetchError,
+}) => {
   if (!localStorage.getItem("work")) {
     console.log("donign so");
     window.localStorage.setItem("work", JSON.stringify([]));
@@ -16,12 +23,11 @@ const Work = () => {
   const [end, setEnd] = useState("");
   const [desc, setDesc] = useState("");
 
-  const handelSubmit = (e) => {
+  const handelSubmit = async (e) => {
     e.preventDefault();
     let myform = document.getElementsByTagName("input");
     const filtered = [...myform].filter((inp) => inp.className !== "submit");
     const check = filtered.filter((input) => input.className === "valid");
-    console.log(check);
     if (check.length >= 6) {
       const qualiInfo = {
         countery,
@@ -35,7 +41,18 @@ const Work = () => {
       };
       edu.push(qualiInfo);
       window.localStorage.setItem("work", JSON.stringify(edu));
-      window.location.pathname = "/create/work-view";
+      const updateOptions = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ work: edu }),
+      };
+      const reqUrl = `${API_URL}/${perosnID}`;
+      const result = await apiRequest(reqUrl, updateOptions);
+      if (result) setfetchError(result);
+      setShowWork(false);
+      setShowWorkView(true);
     } else {
       filtered.forEach((element) => {
         if (element.className !== "valid") {

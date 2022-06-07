@@ -1,6 +1,13 @@
 import { useState } from "react";
+import apiRequest from "../../apiRequest";
 
-const Education = () => {
+const Education = ({
+  setShowEducation,
+  setShowEducationView,
+  setfetchError,
+  API_URL,
+  perosnID,
+}) => {
   if (!localStorage.getItem("edu")) {
     window.localStorage.setItem("edu", JSON.stringify([]));
   }
@@ -11,7 +18,7 @@ const Education = () => {
   const [quali, setQuali] = useState("");
   const [data, setDate] = useState("");
 
-  const handelSubmit = (page) => {
+  const handelSubmit = async (page) => {
     let myform = document.getElementsByTagName("input");
     const sele = document.getElementById("quali-sele");
     const filtered = [sele, ...myform].filter(
@@ -24,7 +31,19 @@ const Education = () => {
       const qualiInfo = { data, name, quali, city, id: Date.now() };
       edu.push(qualiInfo);
       window.localStorage.setItem("edu", JSON.stringify(edu));
-      window.location.pathname = "/create/education-view";
+      const updateOptions = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ edu: edu }),
+      };
+      const reqUrl = `${API_URL}/${perosnID}`;
+      const result = apiRequest(reqUrl, updateOptions);
+      if (result) setfetchError(result);
+
+      setShowEducation(false);
+      setShowEducationView(true);
     } else {
       filtered.forEach((element) => {
         if (element.className !== "valid") {
@@ -33,7 +52,27 @@ const Education = () => {
       });
     }
   };
-
+  //
+  // useEffect(() => {
+  //   const fetchItems = async () => {
+  //     try {
+  //       const response = await fetch(API_URL);
+  //       if (!response.ok) throw Error("Did not received what you looking for");
+  //       const listItmes = await response.json();
+  //       let filtered = listItmes.filter((e) => e.id === perosnID);
+  //       console.log(filtered, "jjj");
+  //       console.log(listItmes);
+  //       setfetchError(null);
+  //     } catch (err) {
+  //       setfetchError(err.message);
+  //     }
+  //   };
+  // console.log(fetchItems());
+  //   setTimeout(() => {
+  //     fetchItems();
+  //   }, 2000);
+  // }, []);
+  //
   return (
     <div id="quali">
       <h2>Tell us about your education</h2>
@@ -91,17 +130,21 @@ const Education = () => {
               id="quali-sele"
               placeholder="hel"
               onChange={(e) => {
-                if (e.target.value.length) {
-                  e.target.classList.remove("invalid");
-                  e.target.classList.add("valid");
-                  setQuali(e.target.value);
-                } else {
-                  e.target.classList.remove("valid");
-                  e.target.classList.add("invalid");
-                }
+                e.target.classList.add("valid");
+                setQuali(e.target.value);
+                // if (e.target.value.length) {
+                //   e.target.classList.remove("invalid");
+                //   console.log(e.target.value, "input value");
+                //   console.log(quali, "quali befor setting");
+                //   setQuali(e.target.value);
+                //   console.log(quali, "qiale after setting");
+                // } else {
+                //   e.target.classList.remove("valid");
+                //   e.target.classList.add("invalid");
+                // }
               }}
             >
-              <option value="">select</option>
+              <option value="">Select</option>
               <option value="GCSE">GCSEs</option>
               <option value="A-Level">A-Levels</option>
               <option value="NV1-1">NVQ 1</option>
@@ -120,12 +163,11 @@ const Education = () => {
                 if (e.target.value.length > 8) {
                   e.target.classList.remove("invalid");
                   e.target.classList.add("valid");
-                  setQuali(e.target.value);
+                  setDate(e.target.value);
                 } else {
                   e.target.classList.remove("valid");
                   e.target.classList.add("invalid");
                 }
-                setDate(e.target.value);
               }}
             ></input>
           </div>

@@ -1,0 +1,45 @@
+{
+  "people": [
+    {
+      "id": 1654643840847,
+      "info": {
+        "first": "Abdulrahman",
+        "last": "Alhariri",
+        "city": "Redcar",
+        "country": "United Kingdom",
+        "email": "abedealerhmane@gmail.com",
+        "post": "TS10 2BE",
+        "phone": "+447459555347",
+        "street": "Redcar"
+      },
+      "edu": [
+        {
+          "data": "2022-06-10",
+          "name": "Abdulrahman",
+          "quali": "GCSE",
+          "city": "Redcar",
+          "id": 1654643855397
+        }
+      ],
+      "work": [
+        {
+          "countery": "jjjjj",
+          "title": "hello",
+          "employer": "jjjj",
+          "city": "jjjjj",
+          "start": "2022-06-04",
+          "end": "2022-06-01",
+          "desc": "",
+          "id": 1654643871661
+        }
+      ],
+      "skills": [
+        {
+          "newSkill": "Html",
+          "id": 1654643878345
+        }
+      ],
+      "text": "Bolean"
+    }
+  ]
+}

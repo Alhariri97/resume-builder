@@ -1,16 +1,40 @@
-const WorkView = () => {
-  const workArray = JSON.parse(localStorage.getItem("work"));
+import { useState } from "react";
+import apiRequest from "../../apiRequest";
+
+const WorkView = ({
+  setShowSkills,
+  setShowWorkView,
+  setShowWork,
+  API_URL,
+  perosnID,
+  setfetchError,
+}) => {
+  const [workArray, setWorkArray] = useState(
+    JSON.parse(localStorage.getItem("work"))
+  );
   const addMore = () => {
-    window.location.pathname = "/create/work";
+    setShowWorkView(false);
+    setShowWork(true);
   };
   const go = () => {
-    window.location.pathname = "/create/skills";
+    setShowWorkView(false);
+    setShowSkills(true);
   };
-  const delet = (e) => {
+  const delet = async (e) => {
     const id = e.target.id;
     let update = workArray.filter((ele) => ele.id.toString() !== id);
     window.localStorage.setItem("work", JSON.stringify(update));
-    window.location.pathname = "/create/work-view";
+    const updateOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ work: update }),
+    };
+    const reqUrl = `${API_URL}/${perosnID}`;
+    const result = await apiRequest(reqUrl, updateOptions);
+    if (result) setfetchError(result);
+    setWorkArray(update);
   };
 
   return (
@@ -27,7 +51,6 @@ const WorkView = () => {
                   <p>
                     from {job.start} to {job.end}
                   </p>
-
                   <p>{job.desc}</p>
                   <span className="del" id={job.id} onClick={delet}>
                     Delet

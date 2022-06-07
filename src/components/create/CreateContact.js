@@ -1,9 +1,17 @@
 import { useState } from "react";
+import apiRequest from "../../apiRequest";
 
-const Contact = (props) => {
+const Contact = ({
+  perosnID,
+  API_URL,
+  setfetchError,
+  setShowContact,
+  setShowEducation,
+}) => {
   if (!localStorage.getItem("info")) {
     localStorage.setItem("info", JSON.stringify({}));
   }
+
   const [first, setFirst] = useState("");
   const [last, setLast] = useState("");
   const [street, setStreet] = useState("");
@@ -13,7 +21,8 @@ const Contact = (props) => {
   const [post, setPost] = useState("");
   const [phone, setPhone] = useState("");
   //
-  function handleSubmit(event) {
+  //
+  const handleSubmit = async (event) => {
     event.preventDefault();
     let myform = document.getElementsByTagName("input");
     const filter = [...myform].filter((inp) => inp.className !== "submit");
@@ -30,14 +39,30 @@ const Contact = (props) => {
         street,
       };
       window.localStorage.setItem("info", JSON.stringify({ personInfo }));
-      window.location.pathname = "/create/education";
+      const postOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: perosnID,
+          info: personInfo,
+          // edu: [],
+          // work: [],
+          // skills: [],
+          // text: {},
+        }),
+      };
+      const result = await apiRequest(API_URL, postOptions);
+      if (result) setfetchError(result);
+      setShowContact(false);
+      setShowEducation(true);
     } else {
       const areNotValid = filter.filter((inp) => inp.className !== "valid");
       areNotValid.forEach((e) => e.classList.add("invalid"));
       areNotValid[0].focus();
     }
-  }
-
+  };
   return (
     <div className="contact">
       <h3>What’s the best way for employers to contact you?</h3>
