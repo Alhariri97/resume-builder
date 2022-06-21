@@ -25,7 +25,7 @@ function CreaeteMain() {
   //
 
   return (
-    <div>
+    <div style={{ minHeight: "6.7vh" }}>
       {fetchError && <p>{`Opps Error: ${fetchError}`}</p>}
       {showContact ? (
         <CreateContact

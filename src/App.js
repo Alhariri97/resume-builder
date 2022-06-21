@@ -1,5 +1,4 @@
 import "./App.css";
-import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //
 
@@ -14,18 +13,11 @@ import ContactUs from "./components/ContactUs";
 import CreaeteMain from "./components/create/CreaeteMain";
 function App() {
   // show and hide component
-  const [show, setShow] = useState(true);
-  const href = window.location.href.split("/");
-  useEffect(() => {
-    if (href.includes("create")) {
-      setShow(false);
-    }
-  }, [href]);
 
   return (
     <BrowserRouter>
       <div className="App">
-        {show ? <Header /> : <></>}
+        <Header />
         <Routes>
           <Route path="/create" element={<CreaeteMain />} />
           <Route path="/" element={<LandPage />} />
@@ -33,7 +25,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/featuers" element={<Features />} />
         </Routes>
-        {show ? <Footer /> : <></>}
+        <Footer />
       </div>
     </BrowserRouter>
   );

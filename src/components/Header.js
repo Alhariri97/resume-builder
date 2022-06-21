@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   const active = (ele) => {};
   return (
@@ -7,24 +9,24 @@ const Header = () => {
       </div>
       <ul>
         <li>
-          <a onClick={active} href="/">
+          <Link onClick={active} to="/">
             Main
-          </a>
+          </Link>
         </li>
         <li>
-          <a onClick={active} href="Other">
+          <Link onClick={active} to="Other">
             work
-          </a>
+          </Link>
         </li>
         <li>
-          <a onClick={active} href="featuers">
+          <Link onClick={active} to="featuers">
             Features
-          </a>
+          </Link>
         </li>
         <li>
-          <a onClick={active} href="Contact-us">
+          <Link onClick={active} to="Contact-us">
             Contact
-          </a>
+          </Link>
         </li>
       </ul>
     </header>

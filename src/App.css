@@ -6,13 +6,19 @@
 .App {
   text-align: center;
   position: relative;
+  min-height: 100vh;
+}
+.final{
+  padding-bottom: 30vh;
 }
 
 *{
   font-family: 'Times New Roman', Times, serif;
 }
 
-
+main{
+  padding-bottom: 16vh;
+}
 
 .App-header {
   background-color: #282c34;
@@ -237,7 +243,8 @@ border-bottom-left-radius: 90px;
 }
 
 footer{
-
+  position: absolute;
+  bottom: 0;
   margin-top: 10px;
   width: 100%;
 

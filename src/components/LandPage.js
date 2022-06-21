@@ -1,10 +1,9 @@
+import { Link } from "react-router-dom";
 const LandPage = () => {
   //
 
   //
-  const go = () => {
-    window.location.pathname = "create";
-  };
+  const go = () => {};
   return (
     <main>
       <div className="be-you">
@@ -19,7 +18,12 @@ const LandPage = () => {
           <h3>Just a Few Clicks and</h3>
           <h3>You Are Ready To Go</h3>
           <p></p>
-          <button onClick={go}>Create My Resume</button>
+          <button>
+            {" "}
+            <Link to="create" onClick={go}>
+              Create My Resume
+            </Link>
+          </button>
         </div>
       </div>
       <div className="second">
