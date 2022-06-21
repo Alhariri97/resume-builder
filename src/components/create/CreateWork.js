@@ -1,13 +1,6 @@
 import { useState } from "react";
-import apiRequest from "../../apiRequest";
 
-const Work = ({
-  setShowWork,
-  setShowWorkView,
-  API_URL,
-  perosnID,
-  setfetchError,
-}) => {
+const Work = ({ setShowWork, setShowWorkView }) => {
   if (!localStorage.getItem("work")) {
     console.log("donign so");
     window.localStorage.setItem("work", JSON.stringify([]));
@@ -41,16 +34,6 @@ const Work = ({
       };
       edu.push(qualiInfo);
       window.localStorage.setItem("work", JSON.stringify(edu));
-      const updateOptions = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ work: edu }),
-      };
-      const reqUrl = `${API_URL}/${perosnID}`;
-      const result = await apiRequest(reqUrl, updateOptions);
-      if (result) setfetchError(result);
       setShowWork(false);
       setShowWorkView(true);
     } else {

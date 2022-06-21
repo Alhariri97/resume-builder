@@ -1,5 +1,4 @@
 import { useState } from "react";
-import apiRequest from "../../apiRequest";
 
 const WorkView = ({
   setShowSkills,
@@ -24,16 +23,6 @@ const WorkView = ({
     const id = e.target.id;
     let update = workArray.filter((ele) => ele.id.toString() !== id);
     window.localStorage.setItem("work", JSON.stringify(update));
-    const updateOptions = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ work: update }),
-    };
-    const reqUrl = `${API_URL}/${perosnID}`;
-    const result = await apiRequest(reqUrl, updateOptions);
-    if (result) setfetchError(result);
     setWorkArray(update);
   };
 

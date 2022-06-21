@@ -1,13 +1,9 @@
 import { useState } from "react";
-import apiRequest from "../../apiRequest";
 
 const EducationView = ({
   setShowEducation,
   setShowEducationView,
   setShowWork,
-  API_URL,
-  perosnID,
-  setfetchError,
 }) => {
   if (!localStorage.getItem("edu")) {
     localStorage.setItem("deu", JSON.stringify([]));
@@ -29,19 +25,6 @@ const EducationView = ({
     console.log(update, "updated");
     setEdu(update);
     window.localStorage.setItem("edu", JSON.stringify(update));
-    //
-    const updateOptions = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ edu: [update] }),
-    };
-    console.log(edu);
-    const reqUrl = `${API_URL}/${perosnID}`;
-    const result = await apiRequest(reqUrl, updateOptions);
-    if (result) setfetchError(result);
-    //
   };
 
   return (

@@ -1,13 +1,5 @@
 import { useState } from "react";
-import apiRequest from "../../apiRequest";
-
-const Summary = ({
-  setShowSummary,
-  setShowFinal,
-  perosnID,
-  API_URL,
-  setfetchError,
-}) => {
+const Summary = ({ setShowSummary, setShowFinal }) => {
   if (!localStorage.getItem("text")) {
     localStorage.setItem("text", JSON.stringify({}));
   }
@@ -16,18 +8,6 @@ const Summary = ({
     const validText = document.getElementsByTagName("textarea");
     if ([...validText][0].className.split(" ").includes("valid")) {
       localStorage.setItem("text", JSON.stringify({ text }));
-      //
-      const updateOptions = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: text }),
-      };
-      const reqUrl = `${API_URL}/${perosnID}`;
-      const result = apiRequest(reqUrl, updateOptions);
-      if (result) setfetchError(result);
-      //
       setShowSummary(false);
       setShowFinal(true);
     } else {

@@ -22,17 +22,14 @@ function App() {
     }
   }, [href]);
 
-  // const [person, setPerson] = useState({});
   return (
     <BrowserRouter>
       <div className="App">
         {show ? <Header /> : <></>}
         <Routes>
-          {/*  */}
           <Route path="/create" element={<CreaeteMain />} />
           <Route path="/" element={<LandPage />} />
           <Route path="/other" element={<Work />} />
-
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/featuers" element={<Features />} />
         </Routes>

@@ -1,13 +1,6 @@
 import { useState } from "react";
-import apiRequest from "../../apiRequest";
 
-const Education = ({
-  setShowEducation,
-  setShowEducationView,
-  setfetchError,
-  API_URL,
-  perosnID,
-}) => {
+const Education = ({ setShowEducation, setShowEducationView }) => {
   if (!localStorage.getItem("edu")) {
     window.localStorage.setItem("edu", JSON.stringify([]));
   }
@@ -31,16 +24,6 @@ const Education = ({
       const qualiInfo = { data, name, quali, city, id: Date.now() };
       edu.push(qualiInfo);
       window.localStorage.setItem("edu", JSON.stringify(edu));
-      const updateOptions = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ edu: edu }),
-      };
-      const reqUrl = `${API_URL}/${perosnID}`;
-      const result = apiRequest(reqUrl, updateOptions);
-      if (result) setfetchError(result);
 
       setShowEducation(false);
       setShowEducationView(true);
@@ -52,27 +35,7 @@ const Education = ({
       });
     }
   };
-  //
-  // useEffect(() => {
-  //   const fetchItems = async () => {
-  //     try {
-  //       const response = await fetch(API_URL);
-  //       if (!response.ok) throw Error("Did not received what you looking for");
-  //       const listItmes = await response.json();
-  //       let filtered = listItmes.filter((e) => e.id === perosnID);
-  //       console.log(filtered, "jjj");
-  //       console.log(listItmes);
-  //       setfetchError(null);
-  //     } catch (err) {
-  //       setfetchError(err.message);
-  //     }
-  //   };
-  // console.log(fetchItems());
-  //   setTimeout(() => {
-  //     fetchItems();
-  //   }, 2000);
-  // }, []);
-  //
+
   return (
     <div id="quali">
       <h2>Tell us about your education</h2>
@@ -132,16 +95,6 @@ const Education = ({
               onChange={(e) => {
                 e.target.classList.add("valid");
                 setQuali(e.target.value);
-                // if (e.target.value.length) {
-                //   e.target.classList.remove("invalid");
-                //   console.log(e.target.value, "input value");
-                //   console.log(quali, "quali befor setting");
-                //   setQuali(e.target.value);
-                //   console.log(quali, "qiale after setting");
-                // } else {
-                //   e.target.classList.remove("valid");
-                //   e.target.classList.add("invalid");
-                // }
               }}
             >
               <option value="">Select</option>

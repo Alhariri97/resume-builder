@@ -1,5 +1,4 @@
 import { useState } from "react";
-import apiRequest from "../../apiRequest";
 
 const Contact = ({
   perosnID,
@@ -39,22 +38,6 @@ const Contact = ({
         street,
       };
       window.localStorage.setItem("info", JSON.stringify({ personInfo }));
-      const postOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: perosnID,
-          info: personInfo,
-          // edu: [],
-          // work: [],
-          // skills: [],
-          // text: {},
-        }),
-      };
-      const result = await apiRequest(API_URL, postOptions);
-      if (result) setfetchError(result);
       setShowContact(false);
       setShowEducation(true);
     } else {

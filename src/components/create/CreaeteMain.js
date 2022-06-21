@@ -21,10 +21,8 @@ function CreaeteMain() {
   const [showSummary, setShowSummary] = useState(false);
   const [showFinal, setShowFinal] = useState(false);
   const [fetchError, setfetchError] = useState(null);
-  const [perosnID] = useState(Date.now());
 
   //
-  const API_URL = "http://localhost:3500/people";
 
   return (
     <div>
@@ -34,16 +32,12 @@ function CreaeteMain() {
           setShowEducation={setShowEducation}
           setShowContact={setShowContact}
           setfetchError={setfetchError}
-          perosnID={perosnID}
-          API_URL={API_URL}
         />
       ) : showEducation ? (
         <CreateEducation
           setShowEducation={setShowEducation}
           setShowEducationView={setShowEducationView}
           setfetchError={setfetchError}
-          perosnID={perosnID}
-          API_URL={API_URL}
         />
       ) : showEducationView ? (
         <CreateEducationView
@@ -51,16 +45,12 @@ function CreaeteMain() {
           setShowEducationView={setShowEducationView}
           setShowWork={setShowWork}
           setfetchError={setfetchError}
-          perosnID={perosnID}
-          API_URL={API_URL}
         />
       ) : showWork ? (
         <CreateWork
           setShowWork={setShowWork}
           setShowWorkView={setShowWorkView}
           setfetchError={setfetchError}
-          perosnID={perosnID}
-          API_URL={API_URL}
         />
       ) : showWrokView ? (
         <CreateWorkView
@@ -68,31 +58,21 @@ function CreaeteMain() {
           setShowWorkView={setShowWorkView}
           setShowSkills={setShowSkills}
           setfetchError={setfetchError}
-          perosnID={perosnID}
-          API_URL={API_URL}
         />
       ) : showSkills ? (
         <CreateSkills
           setShowSkills={setShowSkills}
           setShowSummary={setShowSummary}
           setfetchError={setfetchError}
-          perosnID={perosnID}
-          API_URL={API_URL}
         />
       ) : showSummary ? (
         <CreateSummary
           setShowSummary={setShowSummary}
           setShowFinal={setShowFinal}
           setfetchError={setfetchError}
-          perosnID={perosnID}
-          API_URL={API_URL}
         />
       ) : showFinal ? (
-        <CreateFinal
-          setfetchError={setfetchError}
-          perosnID={perosnID}
-          API_URL={API_URL}
-        />
+        <CreateFinal setfetchError={setfetchError} />
       ) : (
         <div>Refresh the page</div>
       )}

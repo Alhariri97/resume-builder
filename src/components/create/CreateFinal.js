@@ -3,11 +3,6 @@ import { useReactToPrint } from "react-to-print";
 
 import Popup from "../Popup";
 //component to print
-// const info = JSON.parse(localStorage.getItem("info"));
-// const skills = JSON.parse(localStorage.getItem("skills"));
-// const edu = JSON.parse(localStorage.getItem("edu"));
-// const work = JSON.parse(localStorage.getItem("work"));
-// const text = JSON.parse(localStorage.getItem("text"));
 
 const changeHeaderColor = (e) => {
   const page = document.getElementsByTagName("h3");
@@ -49,35 +44,15 @@ const textSize = (e) => {
 //
 
 const ComponentToPrint = React.forwardRef((props, ref) => {
-  const { perosnID, API_URL, setfetchError } = props;
-  // ;;;;;;;;;
-  ////////////////////////
-  const [perosnData, setPerosnData] = useState({
-    info: 3,
-    work: 5,
-    edu: 4,
-    text: 3,
-    skills: 2,
-  });
   const [isLoading, setIsLoading] = useState(true);
+  const info = JSON.parse(localStorage.getItem("info"));
+  const skills = JSON.parse(localStorage.getItem("skills"));
+  const edu = JSON.parse(localStorage.getItem("edu"));
+  const work = JSON.parse(localStorage.getItem("work"));
+  const text = JSON.parse(localStorage.getItem("text"));
   useEffect(() => {
-    const fetchPerson = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(`${API_URL}/${perosnID}`);
-        if (!response.ok) throw Error("Did not received expected data");
-        const perosn = await response.json();
-        setPerosnData(perosn);
-        setIsLoading(false);
-      } catch (error) {
-        setfetchError(error);
-      }
-    };
-    fetchPerson();
-  }, [API_URL, setfetchError, perosnID]);
-
-  //
-  console.log(perosnData.edu);
+    setIsLoading(false);
+  }, []);
   return (
     <div ref={ref} id="print" className="print" color="blue">
       {isLoading ? (
@@ -86,25 +61,25 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
         <>
           <div className="main-info">
             <h2>
-              {perosnData.info.first || []} {perosnData.info.last}{" "}
+              {info.personInfo.first || []} {info.personInfo.last}{" "}
             </h2>
             <p>
-              Address: {perosnData.info.city} {perosnData.info.country}{" "}
-              {perosnData.info.street} {perosnData.info.post}
+              Address: {info.personInfo.city} {info.personInfo.country}{" "}
+              {info.personInfo.street} {info.personInfo.post}
             </p>
-            <p>Phone: {perosnData.info.phone}</p>
-            <p>Email: {perosnData.info.email} </p>
+            <p>Phone: {info.personInfo.phone}</p>
+            <p>Email: {info.personInfo.email} </p>
           </div>
           <div className="border"></div>
           <div className="text">
             <h3>Personal Proflie Statement </h3>
-            <p>{perosnData.text}</p>
+            <p>{text.text}</p>
           </div>
           <div className="border"></div>
           <div className="edu">
             <h3>Education</h3>
             <ul>
-              {perosnData.edu.map((e) => {
+              {edu.map((e) => {
                 return (
                   <li key={e.id}>
                     <h4>
@@ -120,7 +95,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
           <div className="work">
             <h3>Wrok Experence</h3>
             <ul>
-              {perosnData.work.map((e) => {
+              {work.map((e) => {
                 return (
                   <li key={e.id}>
                     <h4>{e.title}</h4>
@@ -138,7 +113,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
           <div className="skills">
             <h3>Skills</h3>
             <ul>
-              {perosnData.skills.map((e) => {
+              {skills.map((e) => {
                 return (
                   <li key={e.id}>
                     <h5> {e.newSkill} </h5>
